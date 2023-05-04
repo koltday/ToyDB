@@ -7,10 +7,10 @@ LDIR =../lib
 
 LIBS=-lm
 
-_DEPS = user.h toydb.h clientsocket.h serversocket.h socket.h networking.h
+_DEPS = user.h toydb.h clientsocket.h serversocket.h socket.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o toydb.o user.o clientsocket.o serversocket.o socket.o 
+_OBJ = main.o toydb.o user.o clientsocket.o serversocket.o socket.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
