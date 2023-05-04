@@ -4,7 +4,10 @@ This is intended to be a simple NoSQL DBMS implemented in modern C++. It's meant
 
 ### Steps to "functional"
 
-[] Get the TCP logic working.
+- [] Get the TCP logic working.
+- [] Get user roles, auth, and environment variables working.
+- [] Implement JSON parsing.
+- [] Implement basic data structures.
 
 ### Basic
 
