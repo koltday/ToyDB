@@ -3,6 +3,7 @@
 #include <vector>
 #include <sstream>
 #include <fstream>
+#include <time.h>
 
 typedef struct User {
     std::string username;
@@ -19,12 +20,30 @@ std::string string_to_lower(std::string &input);
 void parse(std::string);
 void split(std::string&, const char, std::vector<std::string>&);
 void read_users_from_file();
+void read_environment_variables();
 void write_to_binary_log(const std::string&);
 
 int main() {
     std::cout << "Starting up ToyDB...";
+    read_environment_variables();
     write_to_binary_log("started toydb");
+    const char* TOYDB_FIRST_RUN, *TOYDB_FIRST_RUN_VALUE;
+
+    time_t ltime;
+    ltime=time(NULL);
+    
+
+    std::cout << getenv(TOYDB_FIRST_RUN) << std::endl;
     read_users_from_file();
+}
+
+void read_environment_variables() noexcept(false) {
+    std::fstream in;
+    
+    in.open(".tdb.env");
+    if (in.fail()) {
+        std::cout << "Could not detect environment variables. You must ruin toydb-init first before launching the server.\n";
+    }
 }
 
 void read_users_from_file() {
